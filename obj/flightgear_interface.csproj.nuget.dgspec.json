@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\temasaur\\RiderProjects\\flightgear_interface\\flightgear_interface\\flightgear_interface.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\temasaur\\RiderProjects\\flightgear_interface\\flightgear_interface\\flightgear_interface.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\temasaur\\RiderProjects\\flightgear_interface\\flightgear_interface\\flightgear_interface.csproj",
+        "projectName": "flightgear_interface",
+        "projectPath": "C:\\Users\\temasaur\\RiderProjects\\flightgear_interface\\flightgear_interface\\flightgear_interface.csproj",
+        "packagesPath": "C:\\Users\\temasaur\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\temasaur\\RiderProjects\\flightgear_interface\\flightgear_interface\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\temasaur\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
