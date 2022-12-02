@@ -7,4 +7,9 @@
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
+    <ItemGroup>
+      <None Remove="img\plane_bg.jpg" />
+      <Resource Include="img\plane_bg.jpg" />
+    </ItemGroup>
+
 </Project>

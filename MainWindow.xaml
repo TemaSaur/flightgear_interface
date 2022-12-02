@@ -33,7 +33,6 @@
 			Maximum="1"
 			Minimum="-1"
 			Value="0"
-	        MaxHeight="400"
 	        Orientation="Vertical"
 			HorizontalAlignment="Right"
 			Name="Yoke"/>
@@ -54,7 +53,6 @@
 			Maximum="0"
 			Minimum="-1"
 			Value="0"
-	        MaxHeight="400"
 	        Orientation="Vertical"
 			IsDirectionReversed="True"
 	        HorizontalAlignment="Left"
@@ -73,38 +71,38 @@
 		<Button
 			Grid.Row="1"
 			Grid.Column="3"
-			MaxWidth="100"
+			MaxWidth="{StaticResource ButtonWidth}"
 			MaxHeight="30"
 			Content="Receive Data"/>
 		<TextBox
 			Grid.Row="2"
 			Grid.Column="3"
-			MaxWidth="100"
+			MaxWidth="{StaticResource ButtonWidth}"
 			MaxHeight="30"
 			IsHitTestVisible="False"/>
 		
 		<Button
 			Grid.Row="0"
 			Grid.Column="4"
-			MaxWidth="100"
+			MaxWidth="{StaticResource ButtonWidth}"
 			MaxHeight="30"
 			Content="Connect"/>
 		<Button
 			Grid.Row="1"
 			Grid.Column="4"
-			MaxWidth="100"
+			MaxWidth="{StaticResource ButtonWidth}"
 			MaxHeight="30"
 			Content="Disconnect"/>
 		<Button
 			Grid.Row="2"
 			Grid.Column="4"
-			MaxWidth="100"
+			MaxWidth="{StaticResource ButtonWidth}"
 			MaxHeight="30"
 			Content="TestDrive"/>
 		<Button
 			Grid.Row="3"
 			Grid.Column="4"
-			MaxWidth="100"
+			MaxWidth="{StaticResource ButtonWidth}"
 			MaxHeight="30"
 			Content="Take off"/>
 		
@@ -121,7 +119,7 @@
 			Grid.Row="5"
 			Grid.Column="2"
 			Grid.ColumnSpan="2"
-			MaxWidth="100"
+			MaxWidth="{StaticResource ButtonWidth}"
 			MinHeight="30"
 			VerticalAlignment="Top"
 			Margin="0 -10 0 0"
@@ -132,14 +130,14 @@
 		<Button
 			Grid.Row="6"
 			Grid.Column="2"
-			MaxWidth="100"
+			MaxWidth="{StaticResource ButtonWidth}"
 			MaxHeight="30"
 			Content="OK"/>
 		
 		<Button
 			Grid.Row="6"
 			Grid.Column="3"
-			MaxWidth="100"
+			MaxWidth="{StaticResource ButtonWidth}"
 			MaxHeight="30"
 			Content="Cancel"/>
 	</Grid>

@@ -23,6 +23,7 @@ namespace flightgear_interface
 		public MainWindow()
 		{
 			InitializeComponent();
+			Style = (Style)FindResource(typeof(Window));
 		}
 	}
 }
