@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using flightgear_interface.Connection;
 
 namespace flightgear_interface
 {
@@ -20,10 +21,27 @@ namespace flightgear_interface
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private IDebug debug;
+		private FGData fgData;
+		private FgClient client;
+		
+		private const bool showDebug = true;
+		
 		public MainWindow()
 		{
 			InitializeComponent();
 			Style = (Style)FindResource(typeof(Window));
+
+			debug = showDebug ? new DebugConsole() : new EmptyDebug();
+			fgData = new FGData();
+			client = new FgClient(fgData, debug);
+		}
+
+		private void slider_ValueChange(object sender, RoutedPropertyChangedEventArgs<double> e)
+		{
+			var slider = sender as Slider;
+			fgData.Set(slider.Name, e.NewValue);
+			client.Send();
 		}
 	}
 }

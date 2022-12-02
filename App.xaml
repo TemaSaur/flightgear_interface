@@ -23,22 +23,6 @@
 				</Style>
 			</Style.Resources>
 		</Style>
-		<!-- -->
-		<!-- <Style TargetType="Slider"> -->
-		<!-- 	<Style.Resources> -->
-		<Style TargetType="Thumb">
-			<Setter Property="Background" Value="RoyalBlue"/>
-			<Setter Property="Height" Value="30"></Setter>
-			<Setter Property="Width" Value="30"></Setter>
-			
-		</Style>
-		<!-- 	</Style.Resources> -->
-		<!-- </Style> -->
-		
-		<Style TargetType="Slider">
-			<Setter Property="Height" Value="100"/>
-		</Style>
-		
 		<system:Double x:Key="ButtonWidth">120</system:Double>
 	</Application.Resources>
 </Application>

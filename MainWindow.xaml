@@ -35,7 +35,8 @@
 			Value="0"
 	        Orientation="Vertical"
 			HorizontalAlignment="Right"
-			Name="Yoke"/>
+			Name="Elevator"
+			ValueChanged="slider_ValueChange"/>
 		<TextBox
 			Grid.Row="7"
 			Grid.Column="0"
@@ -43,21 +44,20 @@
 			MaxHeight="30"
 			HorizontalAlignment="Right"
 			TextAlignment="Right"
-			Text="{Binding ElementName=Yoke, Path=Value, StringFormat={}{0:N2}, UpdateSourceTrigger=PropertyChanged}"
+			Text="{Binding ElementName=Elevator, Path=Value, StringFormat={}{0:N2}, UpdateSourceTrigger=PropertyChanged}"
 			IsHitTestVisible="False"/>
 		
 		<Slider 
 			Grid.Row="0"
 			Grid.Column="5"
 			Grid.RowSpan="7"
-			Maximum="0"
-			Minimum="-1"
-			Value="0"
+			Maximum="1"
+			Minimum="0"
+			Value="0.2"
 	        Orientation="Vertical"
-			IsDirectionReversed="True"
 	        HorizontalAlignment="Left"
-			Name="Thrust"
-			/>
+			Name="Throttle"
+			ValueChanged="slider_ValueChange"/>
 		<TextBox
 			Grid.Row="7"
 			Grid.Column="5"
@@ -65,7 +65,7 @@
 			MaxHeight="30"
 			HorizontalAlignment="Left"
 			TextAlignment="Left"
-			Text="{Binding ElementName=Thrust, Path=Value, StringFormat={}{0:N2}, UpdateSourceTrigger=PropertyChanged}"
+			Text="{Binding ElementName=Throttle, Path=Value, StringFormat={}{0:N2}, UpdateSourceTrigger=PropertyChanged}"
 			IsHitTestVisible="False"/>
 		
 		<Button
@@ -113,7 +113,8 @@
 			Margin="20 10"
 			Minimum="-1"
 			Maximum="1"
-			Name="Direction"/>
+			Name="Aileron"
+			ValueChanged="slider_ValueChange"/>
 		
 		<TextBox
 			Grid.Row="5"
@@ -123,7 +124,7 @@
 			MinHeight="30"
 			VerticalAlignment="Top"
 			Margin="0 -10 0 0"
-			Text="{Binding ElementName=Direction, Path=Value, StringFormat={}{0:N2}, UpdateSourceTrigger=PropertyChanged}"
+			Text="{Binding ElementName=Aileron, Path=Value, StringFormat={}{0:N2}, UpdateSourceTrigger=PropertyChanged}"
 			IsHitTestVisible="False"/>
 		
 		
