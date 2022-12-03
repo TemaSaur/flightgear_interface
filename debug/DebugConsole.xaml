@@ -11,8 +11,6 @@
         Left="1000">
 	<Grid>
 		<TextBox
-			Height="400"
-			Width="600"
 			Background="#100A24"
 			TextWrapping="Wrap"
 		    VerticalScrollBarVisibility="Auto"
