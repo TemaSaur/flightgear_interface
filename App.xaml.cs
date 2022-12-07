@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using System.Windows;
 
 namespace flightgear_interface
@@ -13,5 +8,13 @@ namespace flightgear_interface
 	/// </summary>
 	public partial class App : Application
 	{
+		private const bool ShowDebug = false;
+		
+		public App()
+		{
+			CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+			
+			Properties["Debug"] = ShowDebug ? new DebugConsole() : new EmptyDebug();
+		}
 	}
 }

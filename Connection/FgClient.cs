@@ -2,6 +2,7 @@
 using System.Net.Sockets;
 using System.Net;
 using System.Text;
+using System.Windows;
 
 namespace flightgear_interface.Connection;
 
@@ -10,37 +11,43 @@ public class FgClient
 	private const string Url = "127.0.0.1";
 	private const int OutputPort = 4444;
 	private const int InputPort = 4445;
-	private IPEndPoint ip;
-	private UdpClient outputSocket;
-	private UdpClient inputSocket;
-	private FGData fg;
+	private UdpClient OutputSocket { get; }
+	private UdpClient InputSocket { get; }
+	private FGData FgData { get; }
+	private IPEndPoint _ip;
 
-	private IDebug debug;
+	private IDebug Debug { get; }
 
-	public FgClient(FGData fg, IDebug debug)
+	public FgClient()
 	{
-		ip = new IPEndPoint(IPAddress.Parse(Url), OutputPort);
-		outputSocket = new UdpClient(OutputPort);
-		inputSocket = new UdpClient();
-		this.fg = fg;
-		this.debug = debug;
+		_ip = new IPEndPoint(IPAddress.Parse(Url), OutputPort);
+		OutputSocket = new UdpClient(OutputPort);
+		InputSocket = new UdpClient();
+		FgData = new FGData();
+		Debug ??= (IDebug)Application.Current.Properties["Debug"]!;
 	}
 
 	public string ReceiveData()
 	{
-		var data = outputSocket.Receive(ref ip);
+		var data = OutputSocket.Receive(ref _ip);
 		return Encoding.ASCII.GetString(data);
 	}
 
-	public void SendCommand(string command)
+	private void SendCommand(string command)
 	{
 		var data = Encoding.ASCII.GetBytes(command);
-		inputSocket.Send(data, data.Length, Url, InputPort);
+		InputSocket.Send(data, data.Length, Url, InputPort);
 	}
 
-	public void Send()
+	private void Send()
 	{
-		var command = fg.GetCommand();
+		var command = FgData.GetCommand();
 		SendCommand(command);
+	}
+
+	public void Set(string name, double value)
+	{
+		FgData.Set(name, value);
+		Send();
 	}
 }

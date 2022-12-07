@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using flightgear_interface.Components;
 using flightgear_interface.Connection;
 
 namespace flightgear_interface
@@ -19,29 +8,64 @@ namespace flightgear_interface
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class MainWindow
 	{
-		private IDebug debug;
-		private FGData fgData;
-		private FgClient client;
-		
-		private const bool showDebug = true;
-		
+		#region Properties
+		private FgClient Client { get; }
+		#endregion
+
+		#region Constructors
 		public MainWindow()
 		{
 			InitializeComponent();
 			Style = (Style)FindResource(typeof(Window));
-
-			debug = showDebug ? new DebugConsole() : new EmptyDebug();
-			fgData = new FGData();
-			client = new FgClient(fgData, debug);
+			Client = new FgClient();
 		}
+		#endregion
 
+		#region Event handlers
 		private void slider_ValueChange(object sender, RoutedPropertyChangedEventArgs<double> e)
 		{
-			var slider = sender as Slider;
-			fgData.Set(slider.Name, e.NewValue);
-			client.Send();
+			var sliderName = ((Slider)sender).Name!;
+			var sliderValue = e.NewValue;
+
+			TryUpdateClient(sliderName, sliderValue);
+
+			TryUpdateJoystick(sliderName, sliderValue);
 		}
+
+		private void Joystick_JoystickMoved(object sender, JoystickMovedEventArgs e)
+		{
+			Aileron.Value = e.NewX;
+			Elevator.Value = e.NewY;
+		}
+
+		private void Reset_Click(object sender, RoutedEventArgs e)
+		{
+			Elevator.Value = 0;
+			Aileron.Value = 0;
+			Throttle.Value = 0.2;
+			Rudder.Value = 0;
+		}
+		#endregion
+		
+		#region Other methods
+		private void TryUpdateClient(string sliderName, double sliderValue)
+		{
+			if ((FgClient?)Client is null) return;
+			
+			Client.Set(sliderName, sliderValue);
+		}
+
+		private void TryUpdateJoystick(string sliderName, double sliderValue)
+		{
+			if (Stick is null) return;
+
+			if (sliderName == "Aileron")
+				Stick.X = sliderValue;
+			else if (sliderName == "Elevator")
+				Stick.Y = sliderValue;
+		}
+		#endregion
 	}
 }
