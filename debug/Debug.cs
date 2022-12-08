@@ -10,8 +10,8 @@ public static class Debug
 
 	private static IDebug? DebugInterface { get; set; }
 
-	public static void WriteLine(string any)
+	public static void WriteLine(object output)
 	{
-		DebugInterface!.WriteLine(any);
+		DebugInterface!.WriteLine(output);
 	}
 }
