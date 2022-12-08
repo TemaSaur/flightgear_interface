@@ -16,7 +16,6 @@ public class FgClient
 	private FGData FgData { get; }
 	private IPEndPoint _ip;
 
-	private IDebug Debug { get; }
 
 	public FgClient()
 	{
@@ -24,7 +23,6 @@ public class FgClient
 		OutputSocket = new UdpClient(OutputPort);
 		InputSocket = new UdpClient();
 		FgData = new FGData();
-		Debug ??= (IDebug)Application.Current.Properties["Debug"]!;
 	}
 
 	public string ReceiveData()

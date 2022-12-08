@@ -1,9 +1,6 @@
-﻿using System.Diagnostics;
-using System.Windows;
+﻿namespace flightgear_interface;
 
-namespace flightgear_interface;
-
-public partial class DebugConsole : Window, IDebug
+public partial class DebugConsole : IDebug
 {
 	public DebugConsole()
 	{
