@@ -53,6 +53,9 @@ namespace flightgear_interface
 		private void TryUpdateClient(string sliderName, double sliderValue)
 		{
 			if ((FgClient?)Client is null) return;
+
+			if (sliderName == "Throttle")
+				sliderValue = -(sliderValue * 2 - 1);
 			
 			Client.Set(sliderName, sliderValue);
 		}
